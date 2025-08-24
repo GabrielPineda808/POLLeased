@@ -1,9 +1,9 @@
 package com.poll.POLLeased.controller;
 
+import com.poll.POLLeased.dto.Vote;
 import com.poll.POLLeased.model.Poll;
+import com.poll.POLLeased.model.OptionVote;
 import com.poll.POLLeased.service.PollService;
-import lombok.RequiredArgsConstructor;
-import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,5 +31,10 @@ public class PollController {
     @GetMapping("/{id}")
     public ResponseEntity<Poll> getPoll(@PathVariable long id){
         return ps.getPoll(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/vote")
+    public void vote(@RequestBody Vote vote){
+        ps.vote(vote.getPollId(), vote.getOptionIndex());
     }
 }
