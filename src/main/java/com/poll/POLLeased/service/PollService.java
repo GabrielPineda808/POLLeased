@@ -4,9 +4,12 @@ import com.poll.POLLeased.model.Poll;
 import com.poll.POLLeased.repository.PollRepository;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.connector.Response;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PollService {
@@ -24,4 +27,7 @@ public class PollService {
         return pr.save(poll);
     }
 
+    public Optional<Poll> getPoll(Long id){
+        return pr.findById(id);
+    }
 }
