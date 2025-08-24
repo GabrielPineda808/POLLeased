@@ -8,6 +8,4 @@ import java.util.List;
 
 @Repository
 public interface PollRepository extends JpaRepository<Poll, Long> {
-    List<Poll> getAll();
-    Poll getPollById(Long id);
 }
