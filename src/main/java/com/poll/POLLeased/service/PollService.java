@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class PollService {
     private PollRepository pr;
-
+    
     public List<Poll> getAll(){
         return pr.getAll();
     }
