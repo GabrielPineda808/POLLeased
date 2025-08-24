@@ -14,15 +14,15 @@ public class Poll {
     //jpa creates separate table in db that takes the poll id and this options list as columns and data
     //using id as a foreign key pointing ot poll id and do this to have them related without making a new model
     @ElementCollection
-    private List<Vote> options = new ArrayList<>();
+    private List<OptionVote> options = new ArrayList<>();
 
 //    @ElementCollection
-//    private List<Vote> votes = new ArrayList<>();
+//    private List<OptionVote> votes = new ArrayList<>();
 
     public Poll() {
     }
 
-    public Poll(String question, List<Vote> options) {
+    public Poll(String question, List<OptionVote> options) {
         this.question = question;
         this.options = options;
     }
@@ -43,11 +43,11 @@ public class Poll {
         this.question = question;
     }
 
-    public List<Vote> getOptions() {
+    public List<OptionVote> getOptions() {
         return options;
     }
 
-    public void setOptions(List<Vote> options) {
+    public void setOptions(List<OptionVote> options) {
         this.options = options;
     }
 }
