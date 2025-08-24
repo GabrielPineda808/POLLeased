@@ -3,14 +3,14 @@ package com.poll.POLLeased.model;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public class Vote {
+public class OptionVote {
     private String pollOption;
     private Long voteCount = 0L;
 
-    public Vote() {
+    public OptionVote() {
     }
 
-    public Vote(String pollOption, Long voteCount) {
+    public OptionVote(String pollOption, Long voteCount) {
         this.pollOption = pollOption;
         this.voteCount = voteCount;
     }
