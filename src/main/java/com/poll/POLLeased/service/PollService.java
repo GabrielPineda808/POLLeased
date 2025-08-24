@@ -10,7 +10,12 @@ import java.util.List;
 public class PollService {
     private PollRepository pr;
 
-    public List<Poll> getAllPolls(){
-        return pr.getAllPoll();
+    public List<Poll> getAll(){
+        return pr.getAll();
     }
+
+    public Poll save(Poll poll){
+        return pr.save(poll);
+    }
+
 }
