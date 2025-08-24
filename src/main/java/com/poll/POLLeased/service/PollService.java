@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
-@NoArgsConstructor
 public class PollService {
     private PollRepository pr;
+
+    public PollService(PollRepository pr) {
+        this.pr = pr;
+    }
 
     public List<Poll> getAll(){
         return pr.findAll();

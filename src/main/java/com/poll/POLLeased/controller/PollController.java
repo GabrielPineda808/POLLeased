@@ -2,6 +2,7 @@ package com.poll.POLLeased.controller;
 
 import com.poll.POLLeased.model.Poll;
 import com.poll.POLLeased.service.PollService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,10 @@ import java.util.List;
 @RequestMapping("/api/poll")
 public class PollController {
     private PollService ps;
+
+    public PollController(PollService ps) {
+        this.ps = ps;
+    }
 
     @PostMapping
     public Poll createPoll(@RequestBody Poll poll){
