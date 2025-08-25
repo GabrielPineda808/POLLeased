@@ -12,6 +12,16 @@ import { Poll } from '../poll.models';
   styleUrls: ['./poll.css']            
 })
 export class PollComponent implements OnInit {
+
+  newPoll: Poll = {
+    id: 0,
+    question: '',
+    options: [
+      {pollOption: '', voteCount: 0},
+      {pollOption: '', voteCount: 0}
+    ]
+  }
+
   polls: Poll[] = [];
   loading = false;
   errorMsg = '';
@@ -36,4 +46,32 @@ export class PollComponent implements OnInit {
       complete: () => this.loading = false
     });
   }
+
+  createPoll(){
+    this.pollService.createPoll(this.newPoll).subscribe({
+      next:(createdPoll)=>{
+        this.polls.push(createdPoll);
+        this.resetPoll();
+      },
+      error:(error) =>{
+        console.error("Error fetching polls: ", error);
+      }
+    });
+  }
+
+  resetPoll(){
+    this.newPoll = {
+      id: 0,
+      question: '',
+      options: [
+        {pollOption: '', voteCount: 0},
+        {pollOption: '', voteCount: 0}
+      ]
+    };
+  }
+
+  vote(pollId: number, optionIndex: number){
+    this.pollService.vote(pollId, optionIndex)
+  }
+
 }
