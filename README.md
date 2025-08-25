@@ -20,11 +20,11 @@ A full‑stack polling application where users can create polls and vote in real
 
 ```mermaid
 flowchart LR
-  subgraph Client (Angular)
-    UI[Angular App] --> STOMP[STOMP client]
+  subgraph Client
+    UI[Angular App]
   end
 
-  subgraph Server (Spring Boot)
+  subgraph Server 
     API[REST Controllers] --> Service[Services]
     Service --> Repo[JPA Repositories]
     Repo --> DB[(MySQL)]
@@ -42,18 +42,19 @@ flowchart LR
 ## 🗄️ Data Model
 
 ```mermaid
+erDiagram
+  POLL ||--o{ POLLL_OPTION : "has"
 
   POLL {
-    id int
-    question string
+    UUID id
+    string question
   }
 
   POLL_OPTION {
-    poll_id int
-    pollOption string
-    vote_count int
+    UUID poll_id
+    string poll_pption
+    int vote_count
   }
-  
 ```
 
 ---
