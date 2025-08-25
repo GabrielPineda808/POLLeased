@@ -21,6 +21,7 @@ public class PollController {
 
     @PostMapping
     public Poll createPoll(@RequestBody Poll poll){
+        poll.setId(null);
         return ps.save(poll);
     }
 
