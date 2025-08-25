@@ -3,16 +3,21 @@
         <h2 class="text-center">Create New Poll</h2>
         
         <div class="mb-3">
-            <input [(ngModel)]="newPoll.question" placeholder="Poll Question..." class="form-control" required/>
+            <input [(ngModel)]="newPoll.question" placeholder="Poll Question..." class="form-control border rounded" required/>
         </div>
         <div class="options-container mb-3">
             @for (option of newPoll.options; track option; let i = $index) {
                 <div class="input-group mb-2">
-                    <input [(ngModel)]="option.pollOption" placeholder="Option..." class="form-control" required/>
+                    <input [(ngModel)]="option.pollOption" placeholder="Option..." class="form-control border rounded" required/>
+                    @if(newPoll.options.length >2){
+                        <button (click)="this.newPoll.options.splice(i, 1)" class="btn btn-danger border rounded ms-1">remove</button>
+                    }
                 </div>
             }
         </div>
-        <button (click)="createPoll()" class="btn btn-primary">Create New Poll</button>
+        <button (click)="addOption()" class="btn btn-primary mb-2">Add Options</button>
+        <br>
+        <button (click)="createPoll()" class="btn btn-primary ">Create New Poll</button>
     </div>
     
     <h2 class="mt-4 text-center">Available polls</h2>
